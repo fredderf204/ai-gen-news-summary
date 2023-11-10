@@ -27,7 +27,7 @@
 
 ## Diagram
 
-![Diagram](./diagram.png)
+![Diagram](./diagram.jpg)
 
 ## Pre-req Azure components
 
