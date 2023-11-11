@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">A process that takes news articles from places like <a href="https://azurefeeds.com/" target="_blank">Azure Feeds</a> and creates a summary of them using <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" target="_blank">Azure Open AI</a>.</h4>
+<h4 align="center">An Azure Function centred process that takes news articles from places like <a href="https://azurefeeds.com/" target="_blank">Azure Feeds</a> and creates a summary of them using <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" target="_blank">Azure Open AI</a>.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -34,7 +34,7 @@
 
 ## Pre-req Azure components
 
-You will need to create the following resouces in Azure before you can deploy the code.
+This repo has the code for all three functions used in this process, but there are some pre-req components that need to be created in Azure before you can deploy the code.
 
 :bulb: There is a current issue open to support multiple deployment options.
 
