@@ -9,7 +9,7 @@ import requests
 import azure.functions as func
 
 def main(mytimer: func.TimerRequest) -> None:
-    sas = os.environ["saskey"]
+    #sas = os.environ["saskey"]
     container_url = os.environ["containerurl"]
     storageaccount = os.environ["storageaccount"]
     
@@ -34,7 +34,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
     container_client.upload_blob(name=today + ".html", data=html, overwrite=True)
 
-    data = {"html": container_url+'/'+today+'/'+today+'.html'+sas}
+    data = {"html": container_url+'/'+today+'/'+today+'.html'}
 
     url = os.environ["logicappurl"]
     headers = {"Content-Type": "application/json"}

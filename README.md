@@ -42,7 +42,6 @@ This repo has the code for all three functions used in this process, but there a
   * Add the below Function App Configuration Application settings once known.
     * "targetrss": "",
     * "logicappurl": "",
-    * "saskey": "",
     * "containerurl": "",
     * "storageaccount": "", <---this is the connection string of your storage account.
     * "aoaiendpoint": "",
