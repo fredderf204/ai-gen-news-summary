@@ -68,7 +68,7 @@ def main(msg: func.QueueMessage) -> None:
 
     else:
         # Container foo does not exist. You can now create it.
-         container_client = blob_service_client.create_container(today, public_access="blob")
+         container_client = blob_service_client.create_container(today)
 
     # Save feed_msg to blob storage
     uid = uuid.uuid4().hex[:6]

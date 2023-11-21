@@ -10,7 +10,7 @@ import azure.functions as func
 
 def main(mytimer: func.TimerRequest) -> None:
     #sas = os.environ["saskey"]
-    container_url = os.environ["containerurl"]
+    static_url = os.environ["staticurl"]
     storageaccount = os.environ["storageaccount"]
     
     blob_service_client = BlobServiceClient.from_connection_string(storageaccount)
@@ -19,7 +19,7 @@ def main(mytimer: func.TimerRequest) -> None:
     container_client = blob_service_client.get_container_client(today)
     container_client1 = blob_service_client.get_container_client('$web')
 
-    html = "<!DOCTYPE html><html lang=en><meta charset=UTF-8><meta content=\"width=device-width,initial-scale=1\"name=viewport><link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css rel=stylesheet crossorigin=anonymous integrity=sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM><link href=styles.css rel=stylesheet><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css\"><style>h1{font-size:2.5rem}h2{font-size:2.25rem}h3{font-size:2rem}h4{font-size:1.75rem}h5{font-size:1.5rem}h6{font-size:1.25rem}p{font-size:1rem}pre{white-space:pre-wrap}@media (max-width:480px){html{font-size:12px}}@media (min-width:480px){html{font-size:13px}}@media (min-width:768px){html{font-size:14px}}@media (min-width:992px){html{font-size:15px}}@media (min-width:1200px){html{font-size:16px}}</style><div class=container-fluid style=text-align:center><h1>Azure News Summary for " + today + "</h1><p><i>* Generated with Azure Open AI, gpt-35-turbo and system message - Using extractive summarization, condense this news article into key bullet points.</i></p><p><i class=\"ti ti-brand-github\"></i><a href=\"https://github.com/fredderf204/ai-gen-news-summary\">https://github.com/fredderf204/ai-gen-news-summary</a></p><hr></div>"
+    html = "<!DOCTYPE html><html lang=en><title>AI Generated Azure News</title><meta charset=UTF-8><meta content=\"width=device-width,initial-scale=1\"name=viewport><link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css rel=stylesheet crossorigin=anonymous integrity=sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css\"><style>h1{font-size:2.5rem}h2{font-size:2.25rem}h3{font-size:2rem}h4{font-size:1.75rem}h5{font-size:1.5rem}h6{font-size:1.25rem}p{font-size:1rem}pre{white-space:pre-wrap}@media (max-width:480px){html{font-size:12px}}@media (min-width:480px){html{font-size:13px}}@media (min-width:768px){html{font-size:14px}}@media (min-width:992px){html{font-size:15px}}@media (min-width:1200px){html{font-size:16px}}</style><div class=container-fluid style=text-align:center><h1>Azure News Summary for " + today + "</h1><p><i>* Generated with Azure Open AI, gpt-35-turbo and system message - Using extractive summarization, condense this news article into key bullet points.</i></p><p><i class=\"ti ti-brand-github\"></i><a href=\"https://github.com/fredderf204/ai-gen-news-summary\">https://github.com/fredderf204/ai-gen-news-summary</a></p><hr></div>"
 
     bloblist = container_client.list_blobs()
 
@@ -46,7 +46,7 @@ def main(mytimer: func.TimerRequest) -> None:
                                    content_md5=properties.content_settings.content_md5)
     shblob_service_client.set_http_headers(blob_headers)
 
-    data = {"html": container_url+'/'+today+'/'+today+'.html'}
+    data = {"html": static_url}
 
     url = os.environ["logicappurl"]
     headers = {"Content-Type": "application/json"}
