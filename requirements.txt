@@ -10,3 +10,4 @@ azure.storage.blob
 readability-lxml
 tiktoken
 openai
+azure.cognitiveservices.speech
